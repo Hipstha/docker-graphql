@@ -44,7 +44,9 @@ jobs:
         docker build -t hipstha/docker-graphql:latest .
 
     - name: Push Docker Image
-      run: | 
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
+      run: |
         docker push hipstha/docker-graphql:$NEW_VERSION
         docker push hipstha/docker-graphql:latest
     # - uses: actions/checkout@v4
