@@ -37,13 +37,15 @@ jobs:
         
 
     - name: Build Docker Image
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker build -t hipstha/docker-graphql:0.0.2 .
+        docker build -t hipstha/docker-graphql:$NEW_VERSION .
         docker build -t hipstha/docker-graphql:latest .
 
     - name: Push Docker Image
       run: | 
-        docker push hipstha/docker-graphql:0.0.2
+        docker push hipstha/docker-graphql:NEW_VERSION
         docker push hipstha/docker-graphql:latest
     # - uses: actions/checkout@v4
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
