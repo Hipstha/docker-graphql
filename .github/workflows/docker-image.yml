@@ -45,7 +45,7 @@ jobs:
 
     - name: Push Docker Image
       run: | 
-        docker push hipstha/docker-graphql:NEW_VERSION
+        docker push hipstha/docker-graphql:$NEW_VERSION
         docker push hipstha/docker-graphql:latest
     # - uses: actions/checkout@v4
     #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
